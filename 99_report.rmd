@@ -22,7 +22,8 @@ newprep <- readRDS("00_data/newprep.rds")
 oldprep <- readRDS("00_data/oldprep.rds")
 
 # read in the bump results
-bumpresults <- readRDS("00_data/test_testbumps_dive_results.rds")
+bumpresultsdive <- readRDS("00_data/test_testbumps_dive_results.rds")
+bumpresultssurf <- readRDS("00_data/test_testbumps_surf_results.rds")
 ```
 
 # tl;dr
@@ -87,17 +88,25 @@ I have a suspicion that since the dive is such a peak, the splines might have di
 
 In addition, I wanted to see how often small perturbations lead in a change in either surface or dive response. I ran the model 100 times each time adding pseudorandom numbers drawn from a separately seeded standard normal to the surface durations.
 
-```{r surf-purturbations, include = FALSE}
-diveres <- sapply(bumpresults, '[[', 1)
-surfres <- sapply(bumpresults, '[[', 2)
+```{r perturbations, include = FALSE}
+# surf perturbation
+diveres <- sapply(bumpresultsdive, '[[', 1)
+surfres <- sapply(bumpresultsdive, '[[', 2)
+
+table(diveres)
+table(surfres)
+
+# dive perturbation
+diveres <- sapply(bumpresultssurf, '[[', 1)
+surfres <- sapply(bumpresultssurf, '[[', 2)
 
 table(diveres)
 table(surfres)
 ```
 
-In 66/100 models the best model did not include a dive response. in 100/100 models it did include a surface response.
+In 34/100 models the best model included a dive response. in 100/100 models it did include a surface response.
 
-I am performing the same procedure for perturbations to the dive durations, but it isn't complete at time of writing. I can see from my log files that currently 77/77 models include a surface response, and that at least some of the models include a dive response, but not all.
+When performing the same procedure for perturbations to the dive durations, 100/100 models did include a surface response (again) and 38/100 models included a dive response. 
 
 # possible remedies
 
