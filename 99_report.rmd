@@ -102,7 +102,7 @@ I am performing the same procedure for perturbations to the dive durations, but 
 # possible remedies
 
 1. We could use some version of the procedure described above to look for instability in all individuals and then determine some criteria/paradigm for reporting results. This might be slow...
-1. My suspicion is the model is having difficulty with large solitary spikes, perhaps a more adaptive procedure for setting the number of knots could help? Or manual tweaking of knots for each individual?
+1. My suspicion is the model is having difficulty with large solitary spikes, perhaps a more adaptive procedure for setting `k` could help? Or manual tweaking it for each individual?
 1. other ideas...?
 
 
